@@ -67,20 +67,20 @@ VERIFICA:
 	
 SENSOR:      
             MOV R3, #04DH
-	      MOV R2, #0FFH
-	      MOV R1, #0FFH
+	    MOV R2, #0FFH
+	    MOV R1, #0FFH
 
 ATRASO:     
             DJNZ R1, ATRASO
-	      DJNZ R2, ATRASO
-	      JNB P1.0, SETFIM
-	      DJNZ R3, ATRASO
+	    DJNZ R2, ATRASO
+	    JNB P1.0, SETFIM
+	    DJNZ R3, ATRASO
 
 SIRENE:      
             CLR  P3.4
-	      CLR  P3.5
-	      CLR P3.6
-	      SETB  P3.7
+	    CLR  P3.5
+	    CLR P3.6
+	    SETB  P3.7
             MOV P2, #000H
             MOV R3, #08H
             MOV R2, #0FFH
@@ -107,15 +107,15 @@ ATRASOSIRENE:
 
 SETFIM:         
             MOV P2, #0FFH
-       	MOV R3, #04H               
-	      MOV R2, #0FFH
-	      MOV R1, #0FFH
+       	    MOV R3, #04H               
+	    MOV R2, #0FFH
+	    MOV R1, #0FFH
 
 FIM:
-	      DJNZ R1, FIM
+	    DJNZ R1, FIM
             DJNZ R2, FIM
             DJNZ R3, FIM
-	      MOV P1, #0FFH
-	      MOV P3, #000H
-	      JMP INICIO                 		          
+	    MOV P1, #0FFH
+	    MOV P3, #000H
+	    JMP INICIO                 		          
 END
