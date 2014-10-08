@@ -84,7 +84,7 @@ SIRENE:
             MOV P2, #000H
             MOV R3, #08H
             MOV R2, #0FFH
-	      MOV R1, #0FFH
+	    MOV R1, #0FFH
 
 ATRASOLED:     
             DJNZ R1, ATRASOLED
