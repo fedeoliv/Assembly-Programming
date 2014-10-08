@@ -36,9 +36,9 @@ INTERVALO:
 ATRASO10:        
            DJNZ R1, ATRASO10
            JNB P1.1, SETFIM
-	     DJNZ R2, ATRASO10
-	     DJNZ R3, ATRASO10
-	     CLR P3.6
+	   DJNZ R2, ATRASO10
+	   DJNZ R3, ATRASO10
+	   CLR P3.6
 	 
 MONITORACAO:      
             MOV R3, #04H
