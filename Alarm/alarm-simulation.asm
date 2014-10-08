@@ -1,5 +1,5 @@
 $mod51
-$title(SISTEMA DE SIMULACAO DE ALARME)
+$title(PROJETO ALARME - USJT)
 
 ; RESETANDO P0 E P2 AO INICIAR
 MOV P0, #000H
@@ -36,86 +36,86 @@ INTERVALO:
 ATRASO10:        
            DJNZ R1, ATRASO10
            JNB P1.1, SETFIM
-	         DJNZ R2, ATRASO10
-	         DJNZ R3, ATRASO10
-	         CLR P3.6
+	     DJNZ R2, ATRASO10
+	     DJNZ R3, ATRASO10
+	     CLR P3.6
 	 
 MONITORACAO:      
-           MOV R3, #04H
-           SETB P3.4
-           CLR P3.5 
-           JNB P1.0, SETFIM
-           JNB P1.2, SENSOR
+            MOV R3, #04H
+            SETB P3.4
+            CLR P3.5 
+            JNB P1.0, SETFIM
+            JNB P1.2, SENSOR
 
 ATRASO05:       
-           DJNZ R1, ATRASO05
-           DJNZ R2, ATRASO05
-           DJNZ R3, ATRASO05
-           JNB P1.0, SETFIM
-           JNB P1.2, SENSOR
-           MOV R3, #04H
-           CLR P3.4
-           SETB P3.5
+            DJNZ R1, ATRASO05
+            DJNZ R2, ATRASO05
+            DJNZ R3, ATRASO05
+            JNB P1.0, SETFIM
+            JNB P1.2, SENSOR
+            MOV R3, #04H
+            CLR P3.4
+            SETB P3.5
 
 VERIFICA:    
-           DJNZ R1, VERIFICA
-           DJNZ R2, VERIFICA
-           DJNZ R3, VERIFICA
-           JNB P1.0, SETFIM
-           JNB P1.2, SENSOR
-           JMP MONITORACAO
+            DJNZ R1, VERIFICA
+            DJNZ R2, VERIFICA
+            DJNZ R3, VERIFICA
+            JNB P1.0, SETFIM
+            JNB P1.2, SENSOR
+            JMP MONITORACAO
 	
 SENSOR:      
-           MOV R3, #04DH
-	         MOV R2, #0FFH
-	         MOV R1, #0FFH
+            MOV R3, #04DH
+	      MOV R2, #0FFH
+	      MOV R1, #0FFH
 
 ATRASO:     
-           DJNZ R1, ATRASO
-	         DJNZ R2, ATRASO
-	         JNB P1.0, SETFIM
-	         DJNZ R3, ATRASO
+            DJNZ R1, ATRASO
+	      DJNZ R2, ATRASO
+	      JNB P1.0, SETFIM
+	      DJNZ R3, ATRASO
 
 SIRENE:      
-           CLR  P3.4
-	         CLR  P3.5
-	         CLR P3.6
-	         SETB  P3.7
-           MOV P2, #000H
-           MOV R3, #08H
-           MOV R2, #0FFH
-	         MOV R1, #0FFH
+            CLR  P3.4
+	      CLR  P3.5
+	      CLR P3.6
+	      SETB  P3.7
+            MOV P2, #000H
+            MOV R3, #08H
+            MOV R2, #0FFH
+	      MOV R1, #0FFH
 
 ATRASOLED:     
-           DJNZ R1, ATRASOLED
-           JNB P1.0, SETFIM
-           DJNZ R2, ATRASOLED
-           DJNZ R3, ATRASOLED
-           MOV P2, #0FFH
-           MOV R3, #03H
-           MOV R2, #0FFH
-           MOV R1, #0FFH
-           JNB P1.0, SETFIM 
+            DJNZ R1, ATRASOLED
+            JNB P1.0, SETFIM
+            DJNZ R2, ATRASOLED
+            DJNZ R3, ATRASOLED
+            MOV P2, #0FFH
+            MOV R3, #03H
+            MOV R2, #0FFH
+            MOV R1, #0FFH
+            JNB P1.0, SETFIM 
 
 ATRASOSIRENE:    
-           DJNZ R1, ATRASOSIRENE
-           JNB P1.0, SETFIM
-           DJNZ R2, ATRASOSIRENE
-           DJNZ R3, ATRASOSIRENE
-           JNB P1.0, SETFIM
-           JMP SIRENE
+            DJNZ R1, ATRASOSIRENE
+            JNB P1.0, SETFIM
+            DJNZ R2, ATRASOSIRENE
+            DJNZ R3, ATRASOSIRENE
+            JNB P1.0, SETFIM
+            JMP SIRENE
 
 SETFIM:         
-           MOV P2, #0FFH
-       	   MOV R3, #04H               
-	         MOV R2, #0FFH
-	         MOV R1, #0FFH
+            MOV P2, #0FFH
+       	MOV R3, #04H               
+	      MOV R2, #0FFH
+	      MOV R1, #0FFH
 
 FIM:
-	         DJNZ R1, FIM
-           DJNZ R2, FIM
-           DJNZ R3, FIM
-	         MOV P1, #0FFH
-	         MOV P3, #000H
-	         JMP INICIO                 		          
+	      DJNZ R1, FIM
+            DJNZ R2, FIM
+            DJNZ R3, FIM
+	      MOV P1, #0FFH
+	      MOV P3, #000H
+	      JMP INICIO                 		          
 END
